@@ -1,0 +1,18 @@
+/*
+  1. npm init
+  2. npm install express@latest --save
+  3. create server.js and create public folder
+  4. include babel-core, react.js and react-dom.js inside index.html
+  5. create app.jsx react file to implement React.render()
+*/
+var express = require('express');
+
+// Create our app
+var app = express();
+
+// app.use as a middleware
+app.use(express.static('public'));
+
+app.listen(3001, function () {
+  console.log('Express server is up on port 3001');
+});
