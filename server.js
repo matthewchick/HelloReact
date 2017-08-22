@@ -11,6 +11,9 @@
  10. learn component state
  11. split one component into two
  12. how to pass argument from parent component to child components using props
+ 13. Install webpack - bundle your assets - css, scripts, images - npm install -g webpack@latest
+     webpack -h for test
+ 14. sudo npm install --save react@latest react-dom@latest
 */
 var express = require('express');
 
