@@ -17,7 +17,7 @@
  15. sudo npm install --save-dev webpack@latest babel-core@latest babel-loader@latest babel-preset-es2015@latest babel-preset-react@latest
  16. Generate the bundle.js - create app.js and webpack ./public/app.js ./public/bundle.js
  17. Create webpack.config file
- 18. 
+ 18. Separate all components in separate files
 */
 var express = require('express');
 
