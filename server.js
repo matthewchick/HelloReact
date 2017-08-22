@@ -20,6 +20,8 @@
  18. Separate all components in separate files
  19. create custom package names => set root: __dirname inside the webpack.config.js file
      webpack -w acts as a background
+ 20. sudo npm install babel-preset-stage-0
+
 */
 var express = require('express');
 
