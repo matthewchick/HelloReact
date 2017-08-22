@@ -18,6 +18,8 @@
  16. Generate the bundle.js - create app.js and webpack ./public/app.js ./public/bundle.js
  17. Create webpack.config file
  18. Separate all components in separate files
+ 19. create custom package names => set root: __dirname inside the webpack.config.js file
+     webpack -w acts as a background
 */
 var express = require('express');
 
