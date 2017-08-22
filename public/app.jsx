@@ -1,5 +1,91 @@
 
+// GreeterMessage component
+var GreeterMessage = React.createClass({
+  render: function() {
+
+    var name = this.props.NewName;
+    var message = this.props.message;
+    return (
+      <div>
+        <h1>Hello {name}!</h1>
+        <p>{message}</p>
+      </div>
+    );
+  }
+});
+
+// GreeterForm component
+var GreeterForm = React.createClass({
+  onFormSubmit: function (e) {
+    e.preventDefault();
+    var name = this.refs.name.value;
+
+    if (name.length > 0){
+      this.refs.name.value='';
+      this.props.onNewName(name);
+    }
+    // alert(name);
+  },
+  render: function() {
+    return (
+        <form onSubmit={this.onFormSubmit}>
+         <input type ="text" ref="name" />
+         <button>Set Name</button>
+        </form>
+    );
+  }
+});
+
 // create react component
+var Greeter = React.createClass({
+
+  //provide default property value if not specified in the HTML markup
+  getDefaultProps: function() {
+    return {
+        name: 'React',
+        message: 'This is the default message'
+    };
+  },
+  getInitialState: function() {
+    return {
+      name: this.props.name
+    };
+  },
+  HandleNewName: function(name) {   //e mean event
+      this.setState({
+        name: name
+      });
+      console.log('name is ' + name);
+  },
+  render: function () {
+    /*
+       anytime this.state.message changes we will see that change reflected in the
+       browser because React will rerender our component
+       At the first time, this.state.name stores the value from initState
+       At the second time, this.sate.name stores the value from onButtonClick
+    */
+    var name = this.state.name;
+    //var name = this.props.name;   //pass parameter to props
+    var message = this.props.message;
+
+    return (
+      <div>
+       <GreeterMessage NewName={name} message={message}/>
+       <GreeterForm onNewName={this.HandleNewName}/>
+      </div>
+    );
+  }
+});
+
+var firstName = 'Matthew'
+
+ReactDOM.render(
+  <Greeter name={firstName} />,
+  //<Greeter name="Matthew"/>,
+  document.getElementById('app')
+);
+
+/* 1st Edition
 var Greeter = React.createClass({
 
   //provide default property value if not specified in the HTML markup
@@ -22,17 +108,17 @@ var Greeter = React.createClass({
     requiredString: this.PropTypes.string.isRequired
 
   },
-  */
+
   onButtonClick: function(e) {   //e mean event
     /* In this video, we use e.preventDefault()
        to prevent the form from executing its default behavior.
        By default a from will refresh the browser window and
        post all the form data via query strings
-    */
+
     e.preventDefault();
     /* Use refs because the object stores all our references,
        not just a single reference.
-    */
+
     var nameRef = this.refs.name
     var name = nameRef.value;   //get the value of name from the form
     nameRef.value = '';         //clear text field
@@ -41,7 +127,7 @@ var Greeter = React.createClass({
        The this.setState() method is added to our React component by React and
        it will update the component's state with the properties that are defined
        in the JSON object that is passed in, and then rerender the component using the new state.
-    */
+
       this.setState({
         name: name
       });
@@ -49,40 +135,33 @@ var Greeter = React.createClass({
     // alert(name);
   },
   render: function () {
-    /*
-       anytime this.state.message changes we will see that change reflected in the
-       browser because React will rerender our component
-       At the first time, this.state.name stores the value from initState
-       At the second time, this.sate.name stores the value from onButtonClick
-    */
-    var name = this.state.name;
-    //var name = this.props.name;   //pass parameter to props
-    var message = this.props.message;
+     anytime this.state.message changes we will see that change reflected in the
+     browser because React will rerender our component
+     At the first time, this.state.name stores the value from initState
+     At the second time, this.sate.name stores the value from onButtonClick
 
-    return (
-      <div>
-       <h1>Hello {name}!</h1>
-       <div>{message + '!!'}</div>
+  var name = this.state.name;
+  //var name = this.props.name;   //pass parameter to props
+  var message = this.props.message;
 
-       <form onSubmit={this.onButtonClick}>
-        <input type ="text" ref="name" />
-        <button>Set Name</button>
-       </form>
-      </div>
-    );
-  }
-});
+  return (
+    <div>
+     <h1>Hello {name}!</h1>
+     <div>{message + '!!'}</div>
 
-var firstName = 'Matthew'
+     <GreeterMessage/>
 
-ReactDOM.render(
-  <Greeter name={firstName} message="Message from prop!"/>,
-  //<Greeter name="Matthew"/>,
-  document.getElementById('app')
-);
-/*
+     <form onSubmit={this.onButtonClick}>
+      <input type ="text" ref="name" />
+      <button>Set Name</button>
+     </form>
+    </div>
+  );
+}
+
 ReactDOM.render(
   <h1>Hello React1</h1>,
   document.getElementById('app')
 )
+
 */
