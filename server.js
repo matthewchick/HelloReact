@@ -14,6 +14,10 @@
  13. Install webpack - bundle your assets - css, scripts, images - npm install -g webpack@latest
      webpack -h for test
  14. sudo npm install --save react@latest react-dom@latest
+ 15. sudo npm install --save-dev webpack@latest babel-core@latest babel-loader@latest babel-preset-es2015@latest babel-preset-react@latest
+ 16. Generate the bundle.js - create app.js and webpack ./public/app.js ./public/bundle.js
+ 17. Create webpack.config file
+ 18. 
 */
 var express = require('express');
 
