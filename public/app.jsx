@@ -9,6 +9,11 @@ var Greeter = React.createClass({
         message: 'This is the default message'
     };
   },
+  getInitialState: function() {
+    return {
+      name: this.props.name
+    };
+  },
   /*
   propTypes: {
     // validate the props
@@ -28,11 +33,30 @@ var Greeter = React.createClass({
     /* Use refs because the object stores all our references,
        not just a single reference.
     */
-    var name = this.refs.name.value;   //get the value of name from the form
-    alert(name);
+    var nameRef = this.refs.name
+    var name = nameRef.value;   //get the value of name from the form
+    nameRef.value = '';         //clear text field
+    if (typeof name === 'string' && name.length > 0) {
+    /*
+       The this.setState() method is added to our React component by React and
+       it will update the component's state with the properties that are defined
+       in the JSON object that is passed in, and then rerender the component using the new state.
+    */
+      this.setState({
+        name: name
+      });
+    }
+    // alert(name);
   },
   render: function () {
-    var name = this.props.name;   //pass parameter to props
+    /*
+       anytime this.state.message changes we will see that change reflected in the
+       browser because React will rerender our component
+       At the first time, this.state.name stores the value from initState
+       At the second time, this.sate.name stores the value from onButtonClick
+    */
+    var name = this.state.name;
+    //var name = this.props.name;   //pass parameter to props
     var message = this.props.message;
 
     return (

@@ -6,8 +6,9 @@
   5. create app.jsx react file to implement React.render()
   6. add react plugin on Atom editor
   7. create react component
-  8. Learn Props <= pass argument to props for storage
+  8. Learn Props <= pass argument to component 
   9. learn how to make event and callback
+ 10. learn component state
 */
 var express = require('express');
 
