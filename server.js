@@ -4,6 +4,10 @@
   3. create server.js and create public folder
   4. include babel-core, react.js and react-dom.js inside index.html
   5. create app.jsx react file to implement React.render()
+  6. add react plugin on Atom editor
+  7. create react component
+  8. Learn Props <= pass argument to props for storage
+  9. learn how to make event and callback
 */
 var express = require('express');
 
