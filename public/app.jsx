@@ -2,71 +2,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var GreeterMessage = require('./components/GreeterMessage');
-
-// GreeterForm component
-var GreeterForm = React.createClass({
-  onFormSubmit: function (e) {
-    e.preventDefault();
-    var updates = {};     // create an object
-    var name = this.refs.name.value;
-    var message = this.refs.message.value;
-
-    if (name.length > 0){
-      this.refs.name.value='';
-      updates.name = name;
-    }
-    if (message.length > 0){
-      this.refs.message.value='';
-      updates.message = message;
-    }
-    this.props.onNewData(updates);
-    // alert(name);
-  },
-  render: function() {
-    return (
-        <form onSubmit={this.onFormSubmit}>
-         <div><input type ="text" ref="name" placeholder="Enter name"/></div>
-         <div><textarea ref="message" placeholder="Enter message"></textarea></div>
-         <button>Submit</button>
-        </form>
-    );
-  }
-});
-
-// create react component
-var Greeter = React.createClass({
-
-  //provide default property value if not specified in the HTML markup
-  getDefaultProps: function() {
-    return {
-        name: 'React',
-        message: 'This is the default message'
-    };
-  },
-  getInitialState: function() {
-    return {
-      name: this.props.name,
-      message: this.props.message
-    };
-  },
-  HandleNewData: function(updates) {   //e mean event
-      this.setState(updates);
-      console.log('name is ' + updates.name);
-  },
-  render: function () {
-
-    var name = this.state.name;
-    //var name = this.props.name;   //pass parameter to props
-    var message = this.state.message;
-
-    return (
-      <div>
-       <GreeterMessage NewName={name} message={message}/>
-       <GreeterForm onNewData={this.HandleNewData}/>
-      </div>
-    );
-  }
-});
+var GreeterForm = require('./components/GreeterForm');
+var Greeter = require('./components/Greeter');
 
 var firstName = 'Matthew'
 
